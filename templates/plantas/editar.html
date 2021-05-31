@@ -1,0 +1,35 @@
+{% extends "plantas/menu.html" %} 
+
+
+{% block content %}
+<style>
+  .rounded-5 {
+      border-radius: 2rem;
+  }
+</style>
+<div class="d-flex text-center mt-5 align-items-center justify-content-center">
+  <div class="shadow-lg rounded-5 p-4" style="width: 30rem;">
+      <div class="card-body">
+          <h3>
+              Editar Planta
+          </h3>
+          <form method="post" action="/editarUsuario" enctype="multipart/form-data">
+            {% for dato in planta%}
+            <input type="hidden" class="form-control form-control-lg mt-4" id="txtId" name="txtId"
+            value="{{dato[0]}}">
+              <label class="float-left h6 mt-4" for="txtNombrePlanta">Nombre de la planta:</label>
+              <input type="text" class="form-control form-control-lg mt-4" id="txtNombrePlanta" name="txtNombrePlanta"
+              value="{{dato[1]}}">
+              <label class="float-left h6 mt-4" for="txtDescripcionPlanta">Descripción de la planta:</label>
+              <input type="text" class="form-control form-control-lg mt-4" id="txtDescripcionPlanta" name="txtDescripcionPlanta"
+              value="{{dato[2]}}">
+              <div class="mt-3">
+                  <button type="submit" class="btn btn-dark btn-lg" >Editar</button>
+                  <button class="btn btn-secundary btn-lg"><a style="text-decoration: none;" href="/">Volver</a></button>
+              </div>
+            {% endfor %}
+          </form>
+      </div>
+  </div>
+</div>
+{% endblock %}

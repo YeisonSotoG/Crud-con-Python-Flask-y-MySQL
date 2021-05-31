@@ -1,0 +1,32 @@
+{% extends "plantas/menu.html" %} {% block content %}
+<div class="container">
+  <div class="row">
+    <a href="{{url_for('vistaCrear')}}" class="btn btn-primary mb-5 mt-5">Crear Planta</a></button>
+    <table class="table">
+      <thead class="text-center bg-success text-light">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+          {% for planta in plantas %}
+          <tr>
+            <td>{{planta[0]}}</td>
+            <td>{{planta[1]}}</td>
+            <td>{{planta[2]}}</td>
+            <td>
+              <a href="/editar/{{planta[0]}}"><img src="{{url_for('static', filename='img/editar.png')}}"  alt="" width="32px">
+              </a>
+              <a href="/eliminar/{{planta[0]}}"><img src="{{url_for('static', filename='img/eliminar.png')}}"  alt="" width="32px">
+              </a>            
+            </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
